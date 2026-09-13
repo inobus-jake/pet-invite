@@ -15,9 +15,7 @@
   <meta property="og:url" content="https://inobus-jake.github.io/pet-invite/">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- 실제 방문자는 회신 페이지로 자동 이동 -->
-  <meta http-equiv="refresh" content="0; url=https://claude.ai/code/artifact/68f5e475-8eca-4189-87e3-d4ae665c73c4">
-  <link rel="canonical" href="https://claude.ai/code/artifact/68f5e475-8eca-4189-87e3-d4ae665c73c4">
+  <link rel="canonical" href="https://inobus-jake.github.io/pet-invite/">
   <style>
     body{margin:0;font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;background:#EEF1E8;color:#21332B;
       display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px;}
@@ -34,5 +32,12 @@
     <a href="https://claude.ai/code/artifact/68f5e475-8eca-4189-87e3-d4ae665c73c4">참석 회신하러 가기 →</a>
     <p>잠시 후 회신 페이지로 이동합니다.</p>
   </div>
+  <script>
+    // 사람(실제 브라우저)만 회신 페이지로 이동. 링크 미리보기 로봇은 JS를 실행하지 않아
+    // 이 페이지의 초대장 정보(OG)만 읽고 멈춥니다.
+    setTimeout(function () {
+      window.location.replace("https://claude.ai/code/artifact/68f5e475-8eca-4189-87e3-d4ae665c73c4");
+    }, 600);
+  </script>
 </body>
 </html>
