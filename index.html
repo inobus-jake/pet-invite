@@ -29,6 +29,7 @@
     --brass: #A98C5C;
     --mist:  #6C7C72;
     --line:  #D8DDD2;
+    --danger: #A33B2E;
     --display: "Nanum Myeongjo", serif;
     --body: "Gowun Batang", "Nanum Myeongjo", serif;
     --sans: "Noto Sans KR", -apple-system, sans-serif;
@@ -105,7 +106,7 @@
   .nav-row { display:flex; gap:8px; }
   .nav-btn { flex:1 1 0; min-width:88px; text-align:center; padding:12px 8px; }
   .btn-copy { margin-top:10px; width:100%; }
-  .btn:focus-visible, .btn-primary:focus-visible, .stepper button:focus-visible { outline:2px solid var(--pine); outline-offset:2px; }
+  .btn:focus-visible, .btn-primary:focus-visible, .stepper button:focus-visible, .chip:focus-visible { outline:2px solid var(--pine); outline-offset:2px; }
 
   .rsvp-box { background: var(--celadon); border:1px solid #D5E0D3; padding: 32px 26px 28px; }
   @media (max-width:480px){ .rsvp-box{ padding:26px 18px 22px; } }
@@ -132,18 +133,34 @@
   }
   .btn-primary:hover { background: var(--pine-deep); }
   .btn-primary:disabled { background:#9AB0A4; cursor:default; }
-  .public-note { font-family: var(--sans); font-size:12px; color: var(--mist); text-align:center; margin:12px 0 0; }
-  .form-error { font-family: var(--sans); font-size:13px; color:#A33B2E; text-align:center; margin:14px 0 0; }
+  .public-note { font-family: var(--sans); font-size:12px; color: var(--mist); text-align:center; margin:12px 0 0; line-height:1.7; }
+  .form-error { font-family: var(--sans); font-size:13px; color: var(--danger); text-align:center; margin:14px 0 0; }
 
   /* 함께하시는 분들 */
   .guest-summary { text-align:center; font-family: var(--sans); font-size:14px; color:#3A4E43; margin:0 0 20px; font-variant-numeric: tabular-nums; }
   .guest-summary b { color: var(--pine-deep); font-weight:700; }
-  .guest-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; max-height: 520px; overflow-y:auto; }
+  .guest-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; max-height: 560px; overflow-y:auto; }
   .guest { background: var(--card); border:1px solid var(--line); padding:13px 16px; }
+  .guest.mine { border-color:#AFC7B8; box-shadow: inset 3px 0 0 var(--pine); }
   .guest-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
   .guest-name { font-family: var(--display); font-weight:700; font-size:16px; color: var(--ink); overflow-wrap:anywhere; }
+  .mine-tag { font-family: var(--sans); font-size:11px; font-weight:500; color: var(--pine); margin-left:8px; white-space:nowrap; }
   .guest-party { flex:none; font-family: var(--sans); font-size:12px; font-weight:700; color: var(--pine-deep); background: var(--celadon); border-radius:999px; padding:3px 11px; font-variant-numeric: tabular-nums; }
   .guest-msg { margin:6px 0 0; font-size:15px; line-height:1.7; color:#33473D; overflow-wrap:anywhere; }
+  .guest-actions { display:flex; justify-content:flex-end; gap:6px; margin-top:10px; }
+  .chip { font-family: var(--sans); font-size:12.5px; font-weight:500; color: var(--pine-deep); background: transparent; border:1px solid #C9D4C6; border-radius:999px; padding:6px 14px; cursor:pointer; -webkit-tap-highlight-color: transparent; }
+  .chip:hover { border-color: var(--pine); background:#F1F5EF; }
+  .chip.danger { color: var(--danger); border-color:#E2C6C1; }
+  .chip.danger:hover { background:#FBF1EF; border-color: var(--danger); }
+  .chip.solid { color:#F4F7F2; background: var(--pine); border-color: var(--pine); }
+  .chip.solid:hover { background: var(--pine-deep); }
+  .chip:disabled { opacity:.55; cursor:default; }
+
+  .edit-form { display:flex; flex-direction:column; gap:10px; }
+  .edit-form label { display:flex; flex-direction:column; gap:5px; font-family: var(--sans); font-size:11.5px; font-weight:700; color: var(--pine-deep); letter-spacing:.06em; }
+  .edit-form input, .edit-form select { width:100%; font-family: var(--sans); font-size:16px; font-weight:400; letter-spacing:0; color: var(--ink); background: var(--card); border:1px solid #C9D4C6; border-radius:4px; padding:10px 12px; }
+  .edit-form input:focus, .edit-form select:focus { outline:none; border-color: var(--pine); box-shadow:0 0 0 3px rgba(46,107,82,.12); }
+  .edit-error { font-family: var(--sans); font-size:12.5px; color: var(--danger); margin:0; }
 
   footer { text-align:center; margin-top:50px; font-family: var(--sans); font-size:12px; letter-spacing:.08em; color: var(--mist); }
   footer .fleur { color: var(--brass); font-size:14px; display:block; margin-bottom:10px; }
@@ -233,27 +250,27 @@
     <section class="rsvp">
       <h2>참석 여부</h2>
       <div class="rsvp-box">
-        <p class="rsvp-lead">자리 준비를 위해<br>참석하실 분의 성함과 동행 인원을 남겨 주세요.</p>
+        <p class="rsvp-lead">자리 준비를 위해<br>참석하실 분의 성함과 참석 인원을 남겨 주세요.</p>
         <form id="rsvpForm" novalidate>
           <div class="field">
             <label for="guestName">성함</label>
             <input type="text" id="guestName" maxlength="20" autocomplete="name" placeholder="홍길동" required>
           </div>
           <div class="field">
-            <label id="compLabel">동행 인원</label>
+            <label id="compLabel">참석 인원 <span class="opt">(본인 포함)</span></label>
             <div class="stepper" role="group" aria-labelledby="compLabel">
-              <button type="button" id="minus" aria-label="동행 인원 줄이기">−</button>
-              <span class="count" id="compCount" aria-live="polite">0명</span>
-              <button type="button" id="plus" aria-label="동행 인원 늘리기">+</button>
+              <button type="button" id="minus" aria-label="참석 인원 줄이기">−</button>
+              <span class="count" id="compCount" aria-live="polite">1명</span>
+              <button type="button" id="plus" aria-label="참석 인원 늘리기">+</button>
             </div>
-            <p class="field-hint">본인 외에 함께 오시는 분의 수입니다.</p>
+            <p class="field-hint">혼자 오시면 1명, 한 분과 함께 오시면 2명입니다.</p>
           </div>
           <div class="field">
             <label for="guestMsg">축하 한마디 <span class="opt">(선택)</span></label>
             <input type="text" id="guestMsg" maxlength="60" autocomplete="off" placeholder="준공을 진심으로 축하드립니다">
           </div>
           <button type="submit" class="btn-primary" id="submitBtn">참석 의사 전하기</button>
-          <p class="public-note">남겨 주신 성함·인원·축하 한마디는 아래 ‘함께하시는 분들’에 공개됩니다.</p>
+          <p class="public-note">남겨 주신 성함·인원·축하 한마디는 아래 ‘함께하시는 분들’에 공개됩니다.<br>신청하신 휴대폰에서는 명단의 내 글을 직접 수정·삭제할 수 있습니다.</p>
           <p class="form-error" id="formError" hidden></p>
         </form>
       </div>
@@ -298,94 +315,290 @@
     }
   });
 
-  // 동행 인원 스테퍼
-  var n = 0, MAX = 10;
+  // 참석 인원(본인 포함) 스테퍼
+  var n = 1, MIN = 1, MAX = 11;
   var countEl = document.getElementById("compCount");
   var minus = document.getElementById("minus"), plus = document.getElementById("plus");
-  function render(){ countEl.textContent = n + "명"; minus.disabled = n<=0; plus.disabled = n>=MAX; }
-  minus.addEventListener("click", function(){ if(n>0){ n--; render(); } });
+  function render(){ countEl.textContent = n + "명"; minus.disabled = n<=MIN; plus.disabled = n>=MAX; }
+  minus.addEventListener("click", function(){ if(n>MIN){ n--; render(); } });
   plus.addEventListener("click", function(){ if(n<MAX){ n++; render(); } });
   render();
 
-  // 참석자 명단: 보관본(저장소) + 최근 12시간 신청(ntfy)을 합쳐서 표시
   var TOPIC = "inobus-pet-2026-gb-7Kq2xW9mR4tZ";
   var ARCHIVE = "https://raw.githubusercontent.com/inobus-jake/pet-invite/main/guestbook.json";
-  var guestList = document.getElementById("guestList");
-  var guestSummary = document.getElementById("guestSummary");
+  var MAIL_TO = ["inobus", "inobus.co.kr"].join("@");
+  var KEY_STORE = "pet-invite-keys-v1";
+  var HEX64 = /^[0-9a-f]{64}$/;
 
-  function clean(e){
-    if (!e || !e.id) return null;
-    var name = String(e.name || "").trim().slice(0, 20);
-    var party = parseInt(e.party, 10);
+  // ---- 본인 확인 열쇠 (이 기기에만 저장) ----
+  function toHex(buf){
+    return Array.prototype.map.call(new Uint8Array(buf), function(b){ return ("0" + b.toString(16)).slice(-2); }).join("");
+  }
+  function randomHex(bytes){ var a = new Uint8Array(bytes); crypto.getRandomValues(a); return toHex(a.buffer); }
+  function sha256(text){ return crypto.subtle.digest("SHA-256", new TextEncoder().encode(text)).then(toHex); }
+  function readKeys(){ try { return JSON.parse(localStorage.getItem(KEY_STORE) || "{}") || {}; } catch(e){ return {}; } }
+  function writeKeys(keys){ try { localStorage.setItem(KEY_STORE, JSON.stringify(keys)); } catch(e){} }
+  function rememberKey(uid, secret){
+    var keys = readKeys();
+    var list = Array.isArray(keys[uid]) ? keys[uid] : [];
+    list.unshift(secret);
+    keys[uid] = list.slice(0, 3);
+    writeKeys(keys);
+  }
+  function forgetKeys(uid){ var keys = readKeys(); delete keys[uid]; writeKeys(keys); }
+  function findSecret(entry){
+    var list = readKeys()[entry.uid];
+    if (!entry.kh || !Array.isArray(list)) return Promise.resolve(null);
+    return list.reduce(function(p, s){
+      return p.then(function(found){
+        if (found) return found;
+        return sha256(s).then(function(h){ return h === entry.kh ? s : null; });
+      });
+    }, Promise.resolve(null));
+  }
+
+  // ---- 명단: 보관본 + 최근 12시간 기록을 순서대로 반영 ----
+  function fields(p){
+    var name = String(p.name || "").trim().slice(0, 20);
+    var party = parseInt(p.party, 10);
     if (!name || !(party >= 1 && party <= 11)) return null;
-    return { id: e.id, time: e.time || 0, name: name, party: party, msg: String(e.msg || "").trim().slice(0, 60) };
+    return { name: name, party: party, msg: String(p.msg || "").trim().slice(0, 60) };
   }
   function fetchArchive(){
     return fetch(ARCHIVE + "?t=" + Date.now(), { cache: "no-store" })
-      .then(function(r){ return r.ok ? r.json() : { entries: [], hide: [] }; })
-      .catch(function(){ return { entries: [], hide: [] }; });
+      .then(function(r){ return r.ok ? r.json() : {}; })
+      .catch(function(){ return {}; });
   }
-  function fetchRecent(){
+  function fetchEvents(){
     return fetch("https://ntfy.sh/" + TOPIC + "/json?poll=1&since=all", { cache: "no-store" })
       .then(function(r){ return r.ok ? r.text() : ""; })
       .then(function(text){
         return text.split("\n").filter(Boolean).map(function(line){
           try {
             var m = JSON.parse(line);
-            if (m.event !== "message") return null;
-            var p = JSON.parse(m.message);
-            return { id: m.id, time: m.time, name: p.name, party: p.party, msg: p.msg };
+            if (m.event !== "message" || !m.id) return null;
+            var p = null;
+            try { p = JSON.parse(m.message); } catch(e){}
+            return { eid: m.id, time: m.time || 0, p: (p && typeof p === "object") ? p : null };
           } catch(e){ return null; }
-        });
+        }).filter(Boolean);
       })
       .catch(function(){ return []; });
   }
-  function loadGuests(){
-    return Promise.all([fetchArchive(), fetchRecent()]).then(function(res){
-      var archive = res[0] || {}, recent = res[1] || [];
-      var hide = {}; (archive.hide || []).forEach(function(id){ hide[id] = true; });
-      var byId = {};
-      (archive.entries || []).concat(recent).forEach(function(raw){
-        var e = clean(raw);
-        if (e && !hide[e.id]) byId[e.id] = e;
-      });
-      return Object.keys(byId).map(function(k){ return byId[k]; })
-        .sort(function(a,b){ return b.time - a.time; });
+  function applyEvent(state, ev){
+    var p = ev.p;
+    if (!p) return Promise.resolve();
+    var type = p.type || "create";
+    var uid = String(p.uid || ev.eid).slice(0, 40);
+    if (type === "create"){
+      var f = fields(p);
+      if (!f || state.entries[uid] || state.deleted[uid]) return Promise.resolve();
+      state.entries[uid] = { uid: uid, eid: ev.eid, time: ev.time, name: f.name, party: f.party, msg: f.msg, kh: HEX64.test(p.kh || "") ? p.kh : "" };
+      return Promise.resolve();
+    }
+    var cur = state.entries[uid];
+    if (!cur || !cur.kh || typeof p.key !== "string") return Promise.resolve();
+    return sha256(p.key).then(function(h){
+      if (h !== cur.kh) return;
+      if (type === "update"){
+        var g = fields(p);
+        if (!g || !HEX64.test(p.kh || "")) return;
+        cur.name = g.name; cur.party = g.party; cur.msg = g.msg; cur.kh = p.kh;
+      } else if (type === "delete"){
+        delete state.entries[uid];
+        state.deleted[uid] = true;
+      }
     });
   }
-  function renderGuests(items){
-    var total = items.reduce(function(sum, e){ return sum + e.party; }, 0);
+  function loadGuests(){
+    return Promise.all([fetchArchive(), fetchEvents()]).then(function(res){
+      var archive = res[0] || {}, events = res[1] || [];
+      var state = { entries: {}, deleted: {} };
+      (archive.entries || []).forEach(function(e){
+        var uid = e.uid || e.id, f = fields(e);
+        if (!uid || !f) return;
+        state.entries[uid] = { uid: uid, eid: e.eid || e.id || uid, time: e.time || 0, name: f.name, party: f.party, msg: f.msg, kh: HEX64.test(e.kh || "") ? e.kh : "" };
+      });
+      (archive.deleted || []).forEach(function(u){ state.deleted[u] = true; });
+      var applied = {}; (archive.applied || []).forEach(function(id){ applied[id] = true; });
+      var hide = {}; (archive.hide || []).forEach(function(id){ hide[id] = true; });
+      return events.filter(function(ev){ return !applied[ev.eid]; })
+        .reduce(function(p, ev){ return p.then(function(){ return applyEvent(state, ev); }); }, Promise.resolve())
+        .then(function(){
+          return Object.keys(state.entries).map(function(k){ return state.entries[k]; })
+            .filter(function(e){ return !hide[e.uid] && !hide[e.eid]; })
+            .sort(function(a, b){ return b.time - a.time; });
+        });
+    });
+  }
+
+  // ---- 기록 전송 ----
+  function publish(payload, title){
+    var send = function(){
+      return fetch("https://ntfy.sh/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ topic: TOPIC, title: title, message: JSON.stringify(payload) })
+      }).then(function(r){ if (!r.ok) throw new Error("publish"); });
+    };
+    return send().catch(function(){ return send(); });
+  }
+  function mail(subject, rows){
+    var body = { _subject: subject, _template: "table" };
+    Object.keys(rows).forEach(function(k){ body[k] = rows[k]; });
+    body["접수 일시"] = new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
+    return fetch("https://formsubmit.co/ajax/" + MAIL_TO, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(body)
+    }).then(function(r){ return r.json(); })
+      .then(function(j){ if (String(j.success) !== "true") throw new Error("mail"); });
+  }
+  function sumParty(items){ return items.reduce(function(s, e){ return s + e.party; }, 0); }
+
+  // ---- 명단 그리기 ----
+  var guestList = document.getElementById("guestList");
+  var guestSummary = document.getElementById("guestSummary");
+  var current = [];
+
+  function el(tag, cls, text){
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+  function renderSummary(items){
     guestSummary.textContent = "";
     if (!items.length){
       guestSummary.textContent = "아직 참석을 알려주신 분이 없습니다. 첫 번째로 알려주세요.";
-    } else {
-      var a = document.createElement("b"); a.textContent = items.length + "분";
-      var b = document.createElement("b"); b.textContent = "총 " + total + "명";
-      guestSummary.appendChild(document.createTextNode("지금까지 "));
-      guestSummary.appendChild(a);
-      guestSummary.appendChild(document.createTextNode("이 참석을 알려주셨고, 동행을 포함해 "));
-      guestSummary.appendChild(b);
-      guestSummary.appendChild(document.createTextNode("이 함께합니다."));
+      return;
     }
+    guestSummary.appendChild(document.createTextNode("지금까지 "));
+    guestSummary.appendChild(el("b", null, items.length + "분"));
+    guestSummary.appendChild(document.createTextNode("이 참석을 알려주셨고, 동행을 포함해 "));
+    guestSummary.appendChild(el("b", null, "총 " + sumParty(items) + "명"));
+    guestSummary.appendChild(document.createTextNode("이 함께합니다."));
+  }
+  function renderItem(li, e){
+    li.className = "guest";
+    li.textContent = "";
+    var head = el("div", "guest-head");
+    var nm = el("span", "guest-name", e.name);
+    head.appendChild(nm);
+    head.appendChild(el("span", "guest-party", e.party + "명"));
+    li.appendChild(head);
+    if (e.msg) li.appendChild(el("p", "guest-msg", e.msg));
+  }
+  function addOwnerTools(li, e, secret){
+    li.classList.add("mine");
+    li.querySelector(".guest-name").appendChild(el("span", "mine-tag", "내가 남긴 글"));
+    var row = el("div", "guest-actions");
+    var edit = el("button", "chip", "수정"); edit.type = "button";
+    var del = el("button", "chip danger", "삭제"); del.type = "button";
+    edit.addEventListener("click", function(){ openEditor(li, e, secret); });
+    del.addEventListener("click", function(){ removeEntry(e, secret, del); });
+    row.appendChild(edit); row.appendChild(del);
+    li.appendChild(row);
+  }
+  function renderGuests(items){
+    current = items;
+    renderSummary(items);
     guestList.textContent = "";
     items.forEach(function(e){
-      var li = document.createElement("li"); li.className = "guest";
-      var head = document.createElement("div"); head.className = "guest-head";
-      var nm = document.createElement("span"); nm.className = "guest-name"; nm.textContent = e.name;
-      var pt = document.createElement("span"); pt.className = "guest-party"; pt.textContent = e.party + "명";
-      head.appendChild(nm); head.appendChild(pt); li.appendChild(head);
-      if (e.msg){
-        var p = document.createElement("p"); p.className = "guest-msg"; p.textContent = e.msg;
-        li.appendChild(p);
-      }
+      var li = el("li");
+      renderItem(li, e);
       guestList.appendChild(li);
+      findSecret(e).then(function(secret){ if (secret && li.isConnected) addOwnerTools(li, e, secret); });
     });
     guestList.hidden = items.length === 0;
   }
-  loadGuests().then(renderGuests);
+  function refresh(){ return loadGuests().then(renderGuests); }
 
-  // 제출: 현재 명단으로 누적 계산 → 담당자 메일 발송 → 명단에 등록 → 완료 페이지
-  var MAIL_TO = ["inobus", "inobus.co.kr"].join("@");
+  function openEditor(li, e, secret){
+    li.textContent = "";
+    li.className = "guest mine";
+    var form = el("form", "edit-form"); form.noValidate = true;
+
+    var nameLabel = el("label", null, "성함");
+    var nameInput = el("input"); nameInput.type = "text"; nameInput.maxLength = 20; nameInput.value = e.name;
+    nameLabel.appendChild(nameInput);
+
+    var partyLabel = el("label", null, "참석 인원 (본인 포함)");
+    var partySelect = el("select");
+    for (var i = 1; i <= 11; i++){
+      var opt = el("option", null, i === 1 ? "1명 (본인만)" : i + "명 (동행 " + (i - 1) + "명)");
+      opt.value = String(i);
+      if (i === e.party) opt.selected = true;
+      partySelect.appendChild(opt);
+    }
+    partyLabel.appendChild(partySelect);
+
+    var msgLabel = el("label", null, "축하 한마디 (선택)");
+    var msgInput = el("input"); msgInput.type = "text"; msgInput.maxLength = 60; msgInput.value = e.msg;
+    msgLabel.appendChild(msgInput);
+
+    var error = el("p", "edit-error"); error.hidden = true;
+    var row = el("div", "guest-actions");
+    var cancel = el("button", "chip", "취소"); cancel.type = "button";
+    var save = el("button", "chip solid", "저장"); save.type = "submit";
+    row.appendChild(cancel); row.appendChild(save);
+
+    form.appendChild(nameLabel); form.appendChild(partyLabel); form.appendChild(msgLabel);
+    form.appendChild(error); form.appendChild(row);
+    li.appendChild(form);
+    nameInput.focus();
+
+    cancel.addEventListener("click", function(){ renderItem(li, e); addOwnerTools(li, e, secret); });
+    form.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      var f = fields({ name: nameInput.value, party: partySelect.value, msg: msgInput.value });
+      if (!f){ error.textContent = "성함을 입력해 주세요."; error.hidden = false; nameInput.focus(); return; }
+      error.hidden = true; save.disabled = true; cancel.disabled = true; save.textContent = "저장 중…";
+      var newSecret = randomHex(32);
+      sha256(newSecret).then(function(newKh){
+        rememberKey(e.uid, newSecret);
+        return publish({ v: 2, type: "update", uid: e.uid, name: f.name, party: f.party, msg: f.msg, key: secret, kh: newKh }, f.name);
+      }).then(function(){
+        var total = sumParty(current.filter(function(x){ return x.uid !== e.uid; })) + f.party;
+        mail("[화성 준공식 참석 수정] " + f.name + " · " + e.party + "명 → " + f.party + "명 · 누적 " + total + "명", {
+          "구분": "수정",
+          "대표자": (e.name === f.name ? f.name : e.name + " → " + f.name),
+          "참석 인원(본인 포함)": e.party + "명 → " + f.party + "명",
+          "축하 한마디": f.msg || "(없음)",
+          "누적 회신": current.length + "건",
+          "누적 참석 인원": total + "명"
+        }).catch(function(){});
+        setTimeout(refresh, 800);
+      }).catch(function(){
+        error.textContent = "저장하지 못했습니다. 잠시 후 다시 시도해 주세요.";
+        error.hidden = false; save.disabled = false; cancel.disabled = false; save.textContent = "저장";
+      });
+    });
+  }
+
+  function removeEntry(e, secret, btn){
+    if (!window.confirm("‘" + e.name + "’ 님의 참석 신청을 삭제할까요?\n삭제하면 명단에서 사라지고 되돌릴 수 없습니다.")) return;
+    btn.disabled = true; btn.textContent = "삭제 중…";
+    publish({ v: 2, type: "delete", uid: e.uid, key: secret }, "삭제").then(function(){
+      forgetKeys(e.uid);
+      var rest = current.filter(function(x){ return x.uid !== e.uid; });
+      mail("[화성 준공식 참석 취소] " + e.name + " · " + e.party + "명 · 누적 " + sumParty(rest) + "명", {
+        "구분": "취소(삭제)",
+        "대표자": e.name,
+        "취소 인원(본인 포함)": e.party + "명",
+        "누적 회신": rest.length + "건",
+        "누적 참석 인원": sumParty(rest) + "명"
+      }).catch(function(){});
+      setTimeout(refresh, 800);
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = "삭제";
+      window.alert("삭제하지 못했습니다. 잠시 후 다시 시도해 주세요.");
+    });
+  }
+
+  refresh();
+
+  // ---- 신청 ----
   var form = document.getElementById("rsvpForm");
   var err = document.getElementById("formError");
   var nameEl = document.getElementById("guestName");
@@ -393,62 +606,41 @@
   var btn = document.getElementById("submitBtn");
   var busy = false;
 
-  function fail(msg){
-    err.textContent = msg; err.hidden = false;
+  function fail(message){
+    err.textContent = message; err.hidden = false;
     btn.textContent = "참석 의사 전하기"; btn.disabled = false; busy = false;
   }
-  function publish(payload){
-    var send = function(){
-      return fetch("https://ntfy.sh/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ topic: TOPIC, title: payload.name, message: JSON.stringify(payload) })
-      }).then(function(r){ if (!r.ok) throw new Error("publish"); });
-    };
-    return send().catch(function(){ return send(); });
-  }
 
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
     if (busy) return;
     var name = nameEl.value.trim().slice(0, 20);
     var message = msgEl.value.trim().slice(0, 60);
     if (!name){ err.textContent = "성함을 입력해 주세요."; err.hidden = false; nameEl.focus(); return; }
     err.hidden = true; busy = true; btn.textContent = "전달하는 중…"; btn.disabled = true;
 
-    var party = n + 1;
-    var payload = { name: name, party: party, msg: message };
+    var party = n;
+    var uid = randomHex(12);
+    var secret = randomHex(32);
     var countAfter = null, peopleAfter = null;
 
     loadGuests()
-      .then(function(items){
-        countAfter = items.length + 1;
-        peopleAfter = items.reduce(function(s, g){ return s + g.party; }, 0) + party;
-      })
-      .catch(function(){ /* 명단을 못 불러와도 메일은 보냄 */ })
+      .then(function(items){ countAfter = items.length + 1; peopleAfter = sumParty(items) + party; })
+      .catch(function(){ /* 명단을 못 불러와도 신청은 진행 */ })
       .then(function(){
-        var when = new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
-        var cum = peopleAfter != null ? "누적 " + peopleAfter + "명" : "누적 집계 실패";
-        return fetch("https://formsubmit.co/ajax/" + MAIL_TO, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify({
-            _subject: "[화성 준공식 참석] " + name + " 외 " + n + "명 · " + cum,
-            _template: "table",
-            "대표자": name,
-            "동행 인원": n + "명",
-            "이번 참석 인원(대표자 포함)": party + "명",
-            "누적 회신": countAfter != null ? countAfter + "건" : "집계 실패",
-            "누적 참석 인원": peopleAfter != null ? peopleAfter + "명" : "집계 실패",
-            "축하 한마디": message || "(없음)",
-            "접수 일시": when
-          })
+        return mail("[화성 준공식 참석] " + name + " · " + party + "명 · " + (peopleAfter != null ? "누적 " + peopleAfter + "명" : "누적 집계 실패"), {
+          "구분": "신규 신청",
+          "대표자": name,
+          "참석 인원(본인 포함)": party + "명",
+          "축하 한마디": message || "(없음)",
+          "누적 회신": countAfter != null ? countAfter + "건" : "집계 실패",
+          "누적 참석 인원": peopleAfter != null ? peopleAfter + "명" : "집계 실패"
         });
       })
-      .then(function(r){ return r.json(); })
-      .then(function(j){
-        if (String(j.success) !== "true") throw new Error("mail");
-        return publish(payload).catch(function(){});
+      .then(function(){ return sha256(secret); })
+      .then(function(kh){
+        rememberKey(uid, secret);
+        return publish({ v: 2, type: "create", uid: uid, name: name, party: party, msg: message, kh: kh }, name).catch(function(){});
       })
       .then(function(){ window.location.href = "thanks.html"; })
       .catch(function(){ fail("전달에 실패했습니다. 잠시 후 다시 시도하시거나 010-9415-4083으로 연락 주세요."); });
