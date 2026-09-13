@@ -72,7 +72,7 @@
   .divider svg { width: 150px; height: 18px; }
 
   .letter { text-align: center; }
-  .letter h2, .info h2, .rsvp h2, .wishes h2 {
+  .letter h2, .info h2, .rsvp h2, .guests h2 {
     font-family: var(--sans); font-size: 12px; font-weight: 700;
     letter-spacing: 0.32em; text-indent: 0.32em; color: var(--pine);
     text-align: center; margin: 0 0 24px;
@@ -132,15 +132,18 @@
   }
   .btn-primary:hover { background: var(--pine-deep); }
   .btn-primary:disabled { background:#9AB0A4; cursor:default; }
+  .public-note { font-family: var(--sans); font-size:12px; color: var(--mist); text-align:center; margin:12px 0 0; }
   .form-error { font-family: var(--sans); font-size:13px; color:#A33B2E; text-align:center; margin:14px 0 0; }
 
-  /* 축하의 말씀 */
-  .wishes-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; max-height: 420px; overflow-y:auto; }
-  .wish { background: var(--card); border:1px solid var(--line); padding:14px 16px; }
-  .wish-msg { margin:0; font-size:15.5px; line-height:1.7; color:#33473D; overflow-wrap:anywhere; }
-  .wish-by { margin:6px 0 0; font-family: var(--sans); font-size:12.5px; color: var(--mist); letter-spacing:.02em; }
-  .wish-by b { color: var(--pine-deep); font-weight:700; }
-  .wishes-empty { text-align:center; font-family: var(--sans); font-size:13.5px; color: var(--mist); margin:0; }
+  /* 함께하시는 분들 */
+  .guest-summary { text-align:center; font-family: var(--sans); font-size:14px; color:#3A4E43; margin:0 0 20px; font-variant-numeric: tabular-nums; }
+  .guest-summary b { color: var(--pine-deep); font-weight:700; }
+  .guest-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; max-height: 520px; overflow-y:auto; }
+  .guest { background: var(--card); border:1px solid var(--line); padding:13px 16px; }
+  .guest-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  .guest-name { font-family: var(--display); font-weight:700; font-size:16px; color: var(--ink); overflow-wrap:anywhere; }
+  .guest-party { flex:none; font-family: var(--sans); font-size:12px; font-weight:700; color: var(--pine-deep); background: var(--celadon); border-radius:999px; padding:3px 11px; font-variant-numeric: tabular-nums; }
+  .guest-msg { margin:6px 0 0; font-size:15px; line-height:1.7; color:#33473D; overflow-wrap:anywhere; }
 
   footer { text-align:center; margin-top:50px; font-family: var(--sans); font-size:12px; letter-spacing:.08em; color: var(--mist); }
   footer .fleur { color: var(--brass); font-size:14px; display:block; margin-bottom:10px; }
@@ -248,9 +251,9 @@
           <div class="field">
             <label for="guestMsg">축하 한마디 <span class="opt">(선택)</span></label>
             <input type="text" id="guestMsg" maxlength="60" autocomplete="off" placeholder="준공을 진심으로 축하드립니다">
-            <p class="field-hint">남겨 주신 글은 작성자 성함과 함께 아래 ‘축하의 말씀’에 보입니다.</p>
           </div>
           <button type="submit" class="btn-primary" id="submitBtn">참석 의사 전하기</button>
+          <p class="public-note">남겨 주신 성함·인원·축하 한마디는 아래 ‘함께하시는 분들’에 공개됩니다.</p>
           <p class="form-error" id="formError" hidden></p>
         </form>
       </div>
@@ -258,10 +261,10 @@
 
     <div class="divider" aria-hidden="true"><svg viewBox="0 0 150 18"><line x1="0" y1="9" x2="56" y2="9" stroke="#A98C5C" stroke-width="0.8" opacity="0.7"/><line x1="94" y1="9" x2="150" y2="9" stroke="#A98C5C" stroke-width="0.8" opacity="0.7"/><g fill="none" stroke="#2E6B52" stroke-width="1.1" stroke-linecap="round"><path d="M75 14 C71 10 70 5 71 1"/><path d="M71 3 C67 4 64 7 64 11 C68 10 70 7 71 3 Z" fill="#2E6B52" fill-opacity="0.15"/><path d="M72 5 C76 4 80 6 81 10 C77 10 74 8 72 5 Z" fill="#2E6B52" fill-opacity="0.15"/></g></svg></div>
 
-    <section class="wishes" aria-live="polite">
-      <h2>축하의 말씀</h2>
-      <ul class="wishes-list" id="wishList" hidden></ul>
-      <p class="wishes-empty" id="wishEmpty">첫 축하 인사를 남겨 주세요.</p>
+    <section class="guests" id="guests" aria-live="polite">
+      <h2>함께하시는 분들</h2>
+      <p class="guest-summary" id="guestSummary">명단을 불러오는 중입니다…</p>
+      <ul class="guest-list" id="guestList" hidden></ul>
     </section>
 
     <footer>
@@ -304,12 +307,19 @@
   plus.addEventListener("click", function(){ if(n<MAX){ n++; render(); } });
   render();
 
-  // 축하의 말씀: 보관본(저장소) + 최근 12시간 글(ntfy)을 합쳐서 표시
+  // 참석자 명단: 보관본(저장소) + 최근 12시간 신청(ntfy)을 합쳐서 표시
   var TOPIC = "inobus-pet-2026-gb-7Kq2xW9mR4tZ";
   var ARCHIVE = "https://raw.githubusercontent.com/inobus-jake/pet-invite/main/guestbook.json";
-  var wishList = document.getElementById("wishList");
-  var wishEmpty = document.getElementById("wishEmpty");
+  var guestList = document.getElementById("guestList");
+  var guestSummary = document.getElementById("guestSummary");
 
+  function clean(e){
+    if (!e || !e.id) return null;
+    var name = String(e.name || "").trim().slice(0, 20);
+    var party = parseInt(e.party, 10);
+    if (!name || !(party >= 1 && party <= 11)) return null;
+    return { id: e.id, time: e.time || 0, name: name, party: party, msg: String(e.msg || "").trim().slice(0, 60) };
+  }
   function fetchArchive(){
     return fetch(ARCHIVE + "?t=" + Date.now(), { cache: "no-store" })
       .then(function(r){ return r.ok ? r.json() : { entries: [], hide: [] }; })
@@ -320,42 +330,61 @@
       .then(function(r){ return r.ok ? r.text() : ""; })
       .then(function(text){
         return text.split("\n").filter(Boolean).map(function(line){
-          try { return JSON.parse(line); } catch(e){ return null; }
-        }).filter(function(m){ return m && m.event === "message"; })
-          .map(function(m){ return { id: m.id, time: m.time, name: (m.title||"").trim().slice(0,20), msg: (m.message||"").trim().slice(0,60) }; });
+          try {
+            var m = JSON.parse(line);
+            if (m.event !== "message") return null;
+            var p = JSON.parse(m.message);
+            return { id: m.id, time: m.time, name: p.name, party: p.party, msg: p.msg };
+          } catch(e){ return null; }
+        });
       })
       .catch(function(){ return []; });
   }
-  function loadWishes(){
-    Promise.all([fetchArchive(), fetchRecent()]).then(function(res){
+  function loadGuests(){
+    return Promise.all([fetchArchive(), fetchRecent()]).then(function(res){
       var archive = res[0] || {}, recent = res[1] || [];
       var hide = {}; (archive.hide || []).forEach(function(id){ hide[id] = true; });
       var byId = {};
-      (archive.entries || []).concat(recent).forEach(function(e){
-        if (!e || !e.id || hide[e.id] || !e.name || !e.msg) return;
-        byId[e.id] = e;
+      (archive.entries || []).concat(recent).forEach(function(raw){
+        var e = clean(raw);
+        if (e && !hide[e.id]) byId[e.id] = e;
       });
-      var items = Object.keys(byId).map(function(k){ return byId[k]; })
-        .sort(function(a,b){ return b.time - a.time; }).slice(0, 100);
-      wishList.textContent = "";
-      items.forEach(function(e){
-        var li = document.createElement("li"); li.className = "wish";
-        var p = document.createElement("p"); p.className = "wish-msg"; p.textContent = e.msg;
-        var by = document.createElement("p"); by.className = "wish-by";
-        var b = document.createElement("b"); b.textContent = e.name;
-        by.appendChild(document.createTextNode("— "));
-        by.appendChild(b);
-        li.appendChild(p); li.appendChild(by);
-        wishList.appendChild(li);
-      });
-      wishList.hidden = items.length === 0;
-      wishEmpty.hidden = items.length !== 0;
+      return Object.keys(byId).map(function(k){ return byId[k]; })
+        .sort(function(a,b){ return b.time - a.time; });
     });
   }
-  loadWishes();
+  function renderGuests(items){
+    var total = items.reduce(function(sum, e){ return sum + e.party; }, 0);
+    guestSummary.textContent = "";
+    if (!items.length){
+      guestSummary.textContent = "아직 참석을 알려주신 분이 없습니다. 첫 번째로 알려주세요.";
+    } else {
+      var a = document.createElement("b"); a.textContent = items.length + "분";
+      var b = document.createElement("b"); b.textContent = "총 " + total + "명";
+      guestSummary.appendChild(document.createTextNode("지금까지 "));
+      guestSummary.appendChild(a);
+      guestSummary.appendChild(document.createTextNode("이 참석을 알려주셨고, 동행을 포함해 "));
+      guestSummary.appendChild(b);
+      guestSummary.appendChild(document.createTextNode("이 함께합니다."));
+    }
+    guestList.textContent = "";
+    items.forEach(function(e){
+      var li = document.createElement("li"); li.className = "guest";
+      var head = document.createElement("div"); head.className = "guest-head";
+      var nm = document.createElement("span"); nm.className = "guest-name"; nm.textContent = e.name;
+      var pt = document.createElement("span"); pt.className = "guest-party"; pt.textContent = e.party + "명";
+      head.appendChild(nm); head.appendChild(pt); li.appendChild(head);
+      if (e.msg){
+        var p = document.createElement("p"); p.className = "guest-msg"; p.textContent = e.msg;
+        li.appendChild(p);
+      }
+      guestList.appendChild(li);
+    });
+    guestList.hidden = items.length === 0;
+  }
+  loadGuests().then(renderGuests);
 
-  // 제출: 누적 집계 → 담당자 메일 발송 → (글이 있으면) 축하의 말씀 등록 → 완료 페이지
-  var COUNTER = "https://abacus.jasoncameron.dev/hit/inobus-hwaseong-pet-2026/";
+  // 제출: 현재 명단으로 누적 계산 → 담당자 메일 발송 → 명단에 등록 → 완료 페이지
   var MAIL_TO = ["inobus", "inobus.co.kr"].join("@");
   var form = document.getElementById("rsvpForm");
   var err = document.getElementById("formError");
@@ -364,22 +393,19 @@
   var btn = document.getElementById("submitBtn");
   var busy = false;
 
-  function hit(key){
-    return fetch(COUNTER + key, { cache: "no-store" })
-      .then(function(r){ return r.json(); })
-      .then(function(j){ return j.value; });
-  }
-  function hitTimes(key, times){
-    var last = Promise.resolve(null);
-    for (var i = 0; i < times; i++) last = last.then(function(){ return hit(key); });
-    return last;
-  }
-  function withTimeout(promise, ms){
-    return Promise.race([promise, new Promise(function(resolve){ setTimeout(resolve, ms); })]);
-  }
   function fail(msg){
     err.textContent = msg; err.hidden = false;
     btn.textContent = "참석 의사 전하기"; btn.disabled = false; busy = false;
+  }
+  function publish(payload){
+    var send = function(){
+      return fetch("https://ntfy.sh/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ topic: TOPIC, title: payload.name, message: JSON.stringify(payload) })
+      }).then(function(r){ if (!r.ok) throw new Error("publish"); });
+    };
+    return send().catch(function(){ return send(); });
   }
 
   form.addEventListener("submit", function(e){
@@ -391,40 +417,38 @@
     err.hidden = true; busy = true; btn.textContent = "전달하는 중…"; btn.disabled = true;
 
     var party = n + 1;
-    var totals = { rsvp: null, people: null };
-    hit("rsvp")
-      .then(function(v){ totals.rsvp = v; return hitTimes("people", party); })
-      .then(function(v){ totals.people = v; })
-      .catch(function(){ /* 집계가 실패해도 회신 메일은 보냄 */ })
+    var payload = { name: name, party: party, msg: message };
+    var countAfter = null, peopleAfter = null;
+
+    loadGuests()
+      .then(function(items){
+        countAfter = items.length + 1;
+        peopleAfter = items.reduce(function(s, g){ return s + g.party; }, 0) + party;
+      })
+      .catch(function(){ /* 명단을 못 불러와도 메일은 보냄 */ })
       .then(function(){
         var when = new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
-        var cum = totals.people != null ? "누적 " + totals.people + "명" : "누적 집계 실패";
-        var body = {
-          _subject: "[화성 준공식 참석] " + name + " 외 " + n + "명 · " + cum,
-          _template: "table",
-          "대표자": name,
-          "동행 인원": n + "명",
-          "이번 참석 인원(대표자 포함)": party + "명",
-          "누적 회신": totals.rsvp != null ? totals.rsvp + "건" : "집계 실패",
-          "누적 참석 인원": totals.people != null ? totals.people + "명" : "집계 실패",
-          "축하 한마디": message || "(없음)",
-          "접수 일시": when
-        };
+        var cum = peopleAfter != null ? "누적 " + peopleAfter + "명" : "누적 집계 실패";
         return fetch("https://formsubmit.co/ajax/" + MAIL_TO, {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify(body)
+          body: JSON.stringify({
+            _subject: "[화성 준공식 참석] " + name + " 외 " + n + "명 · " + cum,
+            _template: "table",
+            "대표자": name,
+            "동행 인원": n + "명",
+            "이번 참석 인원(대표자 포함)": party + "명",
+            "누적 회신": countAfter != null ? countAfter + "건" : "집계 실패",
+            "누적 참석 인원": peopleAfter != null ? peopleAfter + "명" : "집계 실패",
+            "축하 한마디": message || "(없음)",
+            "접수 일시": when
+          })
         });
       })
       .then(function(r){ return r.json(); })
       .then(function(j){
-        if (String(j.success) !== "true"){ throw new Error("mail"); }
-        if (!message) return;
-        return withTimeout(fetch("https://ntfy.sh/", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ topic: TOPIC, title: name, message: message })
-        }).catch(function(){}), 5000);
+        if (String(j.success) !== "true") throw new Error("mail");
+        return publish(payload).catch(function(){});
       })
       .then(function(){ window.location.href = "thanks.html"; })
       .catch(function(){ fail("전달에 실패했습니다. 잠시 후 다시 시도하시거나 010-9415-4083으로 연락 주세요."); });

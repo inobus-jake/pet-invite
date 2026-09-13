@@ -25,11 +25,21 @@ for line in lines:
     m = json.loads(line)
     if m.get("event") != "message" or m.get("id") in seen:
         continue
-    name = (m.get("title") or "").strip()[:20]
-    msg = (m.get("message") or "").strip()[:60]
-    if not name or not msg:
+    try:
+        payload = json.loads(m.get("message") or "")
+    except ValueError:
         continue
-    entries.append({"id": m["id"], "time": m["time"], "name": name, "msg": msg})
+    if not isinstance(payload, dict):
+        continue
+    name = str(payload.get("name") or "").strip()[:20]
+    try:
+        party = int(payload.get("party"))
+    except (TypeError, ValueError):
+        continue
+    if not name or not 1 <= party <= 11:
+        continue
+    msg = str(payload.get("msg") or "").strip()[:60]
+    entries.append({"id": m["id"], "time": m["time"], "name": name, "party": party, "msg": msg})
     seen.add(m["id"])
     added += 1
 
