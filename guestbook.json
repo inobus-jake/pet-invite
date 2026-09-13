@@ -4,7 +4,18 @@
   "O2z6blFvDi9B",
   "VA7K3SzKkqx4"
  ],
- "entries": [],
+ "entries": [
+  {
+   "uid": "06bf0ccce20642111a454458",
+   "eid": "cBHP9aiGYz0w",
+   "time": 1789315407,
+   "name": "한은지",
+   "party": 1,
+   "msg": "🎉🎂🙌🎊축하축하합니다 🥳👏🎁🎈",
+   "kh": "4eab46e91d9f1cdaf62fb46c07fcc4fec710238e50ce289383171843840ce9d0",
+   "edited": 1789315474
+  }
+ ],
  "deleted": [
   "7fdf1441ac294625e2a946bc",
   "HaHJkLBUoJ0s",
@@ -14,9 +25,12 @@
   "5jzxScFbS1Rj",
   "HaHJkLBUoJ0s",
   "O2z6blFvDi9B",
+  "ORuZXgUIHajf",
   "VA7K3SzKkqx4",
   "VinmVjs0XkX1",
+  "cBHP9aiGYz0w",
   "lcyT6cNjrsHC",
+  "sDiTSCQEOwEU",
   "wvyoA3QkvSd3"
  ]
 }
