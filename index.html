@@ -1,43 +1,354 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>화성 PET 선별센터 준공식</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>화성 PET 선별센터 준공식</title>
 
-  <!-- ===== 카카오톡/링크 미리보기 (Open Graph) ===== -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="화성 PET 선별센터 준공식에 모십니다">
-  <meta property="og:description" content="2026. 9. 19 (토) 오전 11시 · 경기도 화성시 양감면 송산리 519-3 · 국내 최초 PET 전용 선별장">
-  <meta property="og:image" content="https://inobus-jake.github.io/pet-invite/invite.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:url" content="https://inobus-jake.github.io/pet-invite/">
-  <meta name="twitter:card" content="summary_large_image">
+<!-- 카카오톡/링크 미리보기 (Open Graph) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="화성 PET 선별센터 준공식에 모십니다">
+<meta property="og:description" content="2026. 9. 19 (토) 오전 11시 · 경기도 화성시 양감면 송산리 519-3 · 국내 최초 PET 전용 선별장">
+<meta property="og:image" content="https://inobus-jake.github.io/pet-invite/invite.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://inobus-jake.github.io/pet-invite/">
+<meta name="twitter:card" content="summary_large_image">
 
-  <link rel="canonical" href="https://inobus-jake.github.io/pet-invite/">
-  <style>
-    body{margin:0;font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif;background:#EEF1E8;color:#21332B;
-      display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px;}
-    .box{max-width:420px}
-    img{max-width:100%;border:1px solid rgba(169,140,92,.4)}
-    a{display:inline-block;margin-top:20px;color:#24543F;font-weight:700;text-decoration:none;
-      border:1px solid #2E6B52;border-radius:999px;padding:12px 26px}
-    p{color:#6C7C72;font-size:14px;margin-top:14px}
-  </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+  :root {
+    --paper: #F7F8F3;
+    --card:  #FDFDFA;
+    --ink:   #21332B;
+    --pine:  #2E6B52;
+    --pine-deep: #24543F;
+    --celadon: #E7EEE6;
+    --brass: #A98C5C;
+    --mist:  #6C7C72;
+    --line:  #D8DDD2;
+    --display: "Nanum Myeongjo", serif;
+    --body: "Gowun Batang", "Nanum Myeongjo", serif;
+    --sans: "Noto Sans KR", -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--body); font-size: 16px; line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  .sheet { max-width: 620px; margin: 0 auto; padding: 24px 14px 60px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    outline: 1px solid rgba(169,140,92,0.45); outline-offset: -9px;
+    padding: 60px 34px 52px;
+  }
+  @media (max-width: 480px){ .card{ padding: 48px 20px 40px; } .sheet{ padding: 12px 10px 44px; } }
+
+  header { text-align: center; }
+  .eyebrow {
+    font-family: var(--sans); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.42em; text-indent: 0.42em; color: var(--brass); margin: 0 0 26px;
+  }
+  .emblem { display: block; margin: 0 auto 28px; width: 140px; height: 140px; }
+  h1 {
+    font-family: var(--display); font-weight: 800; font-size: clamp(25px,6vw,33px);
+    line-height: 1.45; letter-spacing: 0.02em; margin: 0 0 14px; text-wrap: balance;
+  }
+  .subtitle {
+    font-family: var(--display); font-size: 15px; color: var(--pine);
+    letter-spacing: 0.14em; margin: 0 0 28px;
+  }
+  .datebar {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--sans); font-size: 12.5px; font-weight: 500;
+    letter-spacing: 0.14em; color: var(--mist);
+  }
+  .datebar::before, .datebar::after { content:""; display:block; width:32px; height:1px; background:var(--brass); opacity:.6; }
+
+  .divider { display:flex; justify-content:center; margin: 48px 0; }
+  .divider svg { width: 150px; height: 18px; }
+
+  .letter { text-align: center; }
+  .letter h2, .info h2, .rsvp h2 {
+    font-family: var(--sans); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.32em; text-indent: 0.32em; color: var(--pine);
+    text-align: center; margin: 0 0 24px;
+  }
+  .letter p { max-width: 26em; margin: 0 auto 1.4em; font-size: 16px; color: #33473D; }
+  .letter .from { margin-top: 32px; font-family: var(--display); font-weight: 700; font-size: 16px; letter-spacing: .06em; line-height: 1.9; }
+  .letter .from-sub { font-weight: 400; font-size: 13.5px; color: var(--mist); }
+
+  .facts { display:flex; justify-content:center; margin-top: 42px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .facts > div { flex:1; text-align:center; padding: 18px 6px; }
+  .facts > div + div { border-left:1px solid var(--line); }
+  .facts dt { font-family: var(--sans); font-size: 10.5px; font-weight:500; letter-spacing:.2em; color: var(--mist); margin:0 0 6px; }
+  .facts dd { margin:0; font-family: var(--display); font-weight:700; font-size:15px; letter-spacing:.04em; }
+
+  .info { text-align:center; }
+  .when { font-family: var(--display); font-weight:700; font-size: clamp(20px,5vw,24px); letter-spacing:.05em; margin:0 0 4px; }
+  .when-sub { font-family: var(--sans); font-size:14px; color: var(--mist); letter-spacing:.1em; margin:0 0 18px; }
+  .dday { display:inline-block; font-family: var(--sans); font-size:12px; font-weight:700; letter-spacing:.16em; color: var(--pine-deep); background: var(--celadon); border-radius:999px; padding:7px 18px; font-variant-numeric: tabular-nums; }
+  .place { margin-top: 28px; padding-top: 24px; border-top:1px dashed var(--line); }
+  .place-name { font-family: var(--display); font-weight:700; font-size:18px; margin:0 0 4px; }
+  .place-addr { font-family: var(--sans); font-size:14.5px; color: var(--mist); margin:0 0 20px; }
+
+  .btn {
+    font-family: var(--sans); font-size:13.5px; font-weight:500; letter-spacing:.04em;
+    color: var(--ink); background: transparent; border:1px solid #C4CBBE; border-radius:999px;
+    padding: 11px 20px; text-decoration:none; cursor:pointer; -webkit-tap-highlight-color: transparent;
+    transition: border-color .18s, background .18s;
+  }
+  .btn:hover { border-color: var(--pine); background:#F1F5EF; }
+  .nav-row { display:flex; gap:8px; }
+  .nav-btn { flex:1 1 0; min-width:88px; text-align:center; padding:12px 8px; }
+  .btn-copy { margin-top:10px; width:100%; }
+  .btn:focus-visible, .btn-primary:focus-visible, .stepper button:focus-visible { outline:2px solid var(--pine); outline-offset:2px; }
+
+  .rsvp-box { background: var(--celadon); border:1px solid #D5E0D3; padding: 32px 26px 28px; }
+  @media (max-width:480px){ .rsvp-box{ padding:26px 18px 22px; } }
+  .rsvp-lead { text-align:center; font-size:15.5px; color:#3A4E43; margin:0 0 24px; }
+  .field { margin-bottom: 18px; }
+  .field label { display:block; font-family: var(--sans); font-size:12px; font-weight:700; letter-spacing:.14em; color: var(--pine-deep); margin-bottom:8px; }
+  .field input[type="text"], .field textarea {
+    width:100%; font-family: var(--sans); font-size:16px; color: var(--ink);
+    background: var(--card); border:1px solid #C9D4C6; border-radius:4px; padding:12px 14px; transition: border-color .15s;
+  }
+  .field input:focus, .field textarea:focus { outline:none; border-color: var(--pine); box-shadow:0 0 0 3px rgba(46,107,82,.12); }
+  .field textarea { resize: vertical; min-height:58px; }
+
+  .stepper { display:flex; align-items:center; width:fit-content; background: var(--card); border:1px solid #C9D4C6; border-radius:4px; overflow:hidden; }
+  .stepper button { font-family: var(--sans); font-size:20px; line-height:1; width:46px; height:46px; border:none; background:transparent; color: var(--pine-deep); cursor:pointer; }
+  .stepper button:hover { background:#EFF4ED; }
+  .stepper button:disabled { color:#B9C4B8; cursor:default; background:transparent; }
+  .stepper .count { font-family: var(--sans); font-variant-numeric: tabular-nums; font-size:16px; font-weight:700; width:66px; text-align:center; border-left:1px solid #E0E8DD; border-right:1px solid #E0E8DD; align-self:stretch; display:flex; align-items:center; justify-content:center; }
+  .stepper-hint { font-family: var(--sans); font-size:12px; color: var(--mist); margin-top:7px; }
+
+  .btn-primary {
+    display:block; width:100%; margin-top:24px; font-family: var(--sans); font-size:15px; font-weight:700;
+    letter-spacing:.14em; text-indent:.14em; color:#F4F7F2; background: var(--pine); border:none; border-radius:4px; padding:16px; cursor:pointer; transition: background .18s;
+  }
+  .btn-primary:hover { background: var(--pine-deep); }
+  .form-error { font-family: var(--sans); font-size:13px; color:#A33B2E; text-align:center; margin:14px 0 0; }
+
+  footer { text-align:center; margin-top:50px; font-family: var(--sans); font-size:12px; letter-spacing:.08em; color: var(--mist); }
+  footer .fleur { color: var(--brass); font-size:14px; display:block; margin-bottom:10px; }
+  footer .contact { margin:16px 0 0; }
+  footer .contact a { color: var(--pine-deep); text-decoration:none; border-bottom:1px solid rgba(46,107,82,.35); padding-bottom:1px; }
+
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  [hidden] { display:none !important; }
+
+  @media (max-width:480px){
+    h1{ font-size:25px; } .emblem{ width:124px; height:124px; }
+    .datebar{ font-size:11.5px; letter-spacing:.1em; gap:9px; } .datebar::before,.datebar::after{ width:20px; }
+    .facts dd{ font-size:13.5px; } .facts dt{ font-size:9.5px; letter-spacing:.13em; }
+  }
+  @media (max-width:340px){ .datebar::before,.datebar::after{ display:none; } .nav-btn{ font-size:12.5px; min-width:0; } }
+</style>
 </head>
 <body>
-  <div class="box">
-    <img src="invite.png" alt="화성 PET 선별센터 준공식 초대장">
-    <a href="https://claude.ai/code/artifact/68f5e475-8eca-4189-87e3-d4ae665c73c4">참석 회신하러 가기 →</a>
-    <p>잠시 후 회신 페이지로 이동합니다.</p>
+<div class="sheet">
+  <div class="card">
+    <header>
+      <p class="eyebrow">INVITATION</p>
+      <svg class="emblem" viewBox="0 0 148 148" role="img" aria-label="페트병에서 잎이 돋아나는 문양">
+        <circle cx="74" cy="74" r="66" fill="none" stroke="#A98C5C" stroke-width="1"/>
+        <circle cx="74" cy="74" r="61.5" fill="none" stroke="#A98C5C" stroke-width="0.6" opacity="0.55"/>
+        <g fill="none" stroke="#21332B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="66.5" y="38" width="15" height="7" rx="2.2"/>
+          <path d="M68 45 L66 55 C59.5 59 57 63.5 57 70 L57 100 Q57 108 65 108 L83 108 Q91 108 91 100 L91 70 C91 63.5 88.5 59 82 55 L80 45"/>
+          <line x1="60" y1="78" x2="88" y2="78" stroke-width="0.9" opacity="0.5"/>
+          <line x1="60" y1="94" x2="88" y2="94" stroke-width="0.9" opacity="0.5"/>
+        </g>
+        <g fill="none" stroke="#2E6B52" stroke-width="1.4" stroke-linecap="round">
+          <path d="M81 40 C86 32 93 28 100 28"/>
+          <path d="M100 28 C99 35 94 40 87 41 C86 36 90 30 100 28 Z" fill="#2E6B52" fill-opacity="0.14"/>
+          <path d="M87 34 C83 30 82 26 83 22"/>
+          <path d="M83 22 C87 23 90 27 90 32 C87 31 84 27 83 22 Z" fill="#2E6B52" fill-opacity="0.14"/>
+        </g>
+        <g fill="none" stroke="#A98C5C" stroke-width="1" stroke-linecap="round">
+          <path d="M38 108 C46 117 58 122 71 122"/>
+          <path d="M44 111 C45 107 48 104 52 103 C52 107 49 110 44 111 Z" fill="#A98C5C" fill-opacity="0.16"/>
+          <path d="M53 116 C54 112 57 109 61 108 C61 112 58 115 53 116 Z" fill="#A98C5C" fill-opacity="0.16"/>
+          <path d="M110 108 C102 117 90 122 77 122"/>
+          <path d="M104 111 C103 107 100 104 96 103 C96 107 99 110 104 111 Z" fill="#A98C5C" fill-opacity="0.16"/>
+          <path d="M95 116 C94 112 91 109 87 108 C87 112 90 115 95 116 Z" fill="#A98C5C" fill-opacity="0.16"/>
+        </g>
+      </svg>
+      <h1>화성 PET 선별센터<br>준공식에 모십니다</h1>
+      <p class="subtitle">국내 최초 PET 전용 선별장</p>
+      <p class="datebar">2026 . 09 . 19 SAT AM 11:00</p>
+    </header>
+
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 150 18"><line x1="0" y1="9" x2="56" y2="9" stroke="#A98C5C" stroke-width="0.8" opacity="0.7"/><line x1="94" y1="9" x2="150" y2="9" stroke="#A98C5C" stroke-width="0.8" opacity="0.7"/><g fill="none" stroke="#2E6B52" stroke-width="1.1" stroke-linecap="round"><path d="M75 14 C71 10 70 5 71 1"/><path d="M71 3 C67 4 64 7 64 11 C68 10 70 7 71 3 Z" fill="#2E6B52" fill-opacity="0.15"/><path d="M72 5 C76 4 80 6 81 10 C77 10 74 8 72 5 Z" fill="#2E6B52" fill-opacity="0.15"/></g></svg></div>
+
+    <section class="letter">
+      <h2>모시는 글</h2>
+      <p>버려진 페트병이 다시 맑은 자원으로<br>돌아오는 길목에, 작은 이정표 하나를 세웠습니다.</p>
+      <p>석 달의 공사를 마치고<br>국내 최초 PET 전용 선별장이<br>화성에서 첫 가동을 시작합니다.</p>
+      <p>이 걸음을 함께 지켜봐 주신 분들을 모시고<br>감사의 인사를 전하고자 하오니<br>부디 오셔서 자리를 빛내 주시기 바랍니다.</p>
+      <p class="from">이노버스 대표이사 장진혁<br><span class="from-sub">임직원 일동 드림</span></p>
+      <dl class="facts">
+        <div><dt>MILESTONE</dt><dd>국내 최초</dd></div>
+        <div><dt>FACILITY</dt><dd>PET 전용 선별장</dd></div>
+        <div><dt>공사 기간</dt><dd>3개월</dd></div>
+      </dl>
+    </section>
+
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 150 18"><line x1="0" y1="9" x2="56" y2="9" stroke="#A98C5C" stroke-width="0.8" opacity="0.7"/><line x1="94" y1="9" x2="150" y2="9" stroke="#A98C5C" stroke-width="0.8" opacity="0.7"/><g fill="none" stroke="#2E6B52" stroke-width="1.1" stroke-linecap="round"><path d="M75 14 C71 10 70 5 71 1"/><path d="M71 3 C67 4 64 7 64 11 C68 10 70 7 71 3 Z" fill="#2E6B52" fill-opacity="0.15"/><path d="M72 5 C76 4 80 6 81 10 C77 10 74 8 72 5 Z" fill="#2E6B52" fill-opacity="0.15"/></g></svg></div>
+
+    <section class="info">
+      <h2>일시 · 장소</h2>
+      <p class="when">2026년 9월 19일 토요일</p>
+      <p class="when-sub">오전 11시</p>
+      <span class="dday" id="dday" hidden></span>
+      <div class="place">
+        <p class="place-name">화성 PET 선별센터</p>
+        <p class="place-addr">경기도 화성시 양감면 송산리 519-3</p>
+        <div class="nav-row">
+          <a class="btn nav-btn" href="https://map.naver.com/p/search/%EC%86%A1%EC%82%B0%EB%A6%AC%20519-3/address/3zicPY,2AsSVo,%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EB%A7%8C%EC%84%B8%EA%B5%AC%20%EC%96%91%EA%B0%90%EB%A9%B4%20%EC%86%A1%EC%82%B0%EB%A6%AC%20519-3?c=15.00,0,0,0,dh" target="_blank" rel="noopener">네이버 지도</a>
+          <a class="btn nav-btn" href="https://map.kakao.com/?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EC%96%91%EA%B0%90%EB%A9%B4%20%EC%86%A1%EC%82%B0%EB%A6%AC%20519-3" target="_blank" rel="noopener">카카오맵</a>
+          <a class="btn nav-btn" href="tmap://search?name=%ED%99%94%EC%84%B1%EC%8B%9C%20%EC%96%91%EA%B0%90%EB%A9%B4%20%EC%86%A1%EC%82%B0%EB%A6%AC%20519-3" rel="noopener">티맵</a>
+        </div>
+        <button class="btn btn-copy" type="button" id="copyAddr">주소 복사</button>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 150 18"><line x1="0" y1="9" x2="56" y2="9" stroke="#A98C5C" stroke-width="0.8" opacity="0.7"/><line x1="94" y1="9" x2="150" y2="9" stroke="#A98C5C" stroke-width="0.8" opacity="0.7"/><g fill="none" stroke="#2E6B52" stroke-width="1.1" stroke-linecap="round"><path d="M75 14 C71 10 70 5 71 1"/><path d="M71 3 C67 4 64 7 64 11 C68 10 70 7 71 3 Z" fill="#2E6B52" fill-opacity="0.15"/><path d="M72 5 C76 4 80 6 81 10 C77 10 74 8 72 5 Z" fill="#2E6B52" fill-opacity="0.15"/></g></svg></div>
+
+    <section class="rsvp">
+      <h2>참석 여부</h2>
+      <div class="rsvp-box">
+        <p class="rsvp-lead">자리 준비를 위해<br>참석하실 분의 성함과 동행 인원을 남겨 주세요.</p>
+        <form id="rsvpForm" novalidate>
+          <div class="field">
+            <label for="guestName">성함</label>
+            <input type="text" id="guestName" name="name" maxlength="20" autocomplete="name" placeholder="홍길동" required>
+          </div>
+          <div class="field">
+            <label id="compLabel">동행 인원</label>
+            <div class="stepper" role="group" aria-labelledby="compLabel">
+              <button type="button" id="minus" aria-label="동행 인원 줄이기">−</button>
+              <span class="count" id="compCount" aria-live="polite">0명</span>
+              <button type="button" id="plus" aria-label="동행 인원 늘리기">+</button>
+            </div>
+            <input type="hidden" name="companions" id="compInput" value="0">
+            <p class="stepper-hint">본인 외에 함께 오시는 분의 수입니다.</p>
+          </div>
+          <button type="submit" class="btn-primary" id="submitBtn">참석 의사 전하기</button>
+          <p class="form-error" id="formError" hidden></p>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <span class="fleur" aria-hidden="true">❦</span>
+      화성 PET 선별센터 준공식<br>
+      2026. 09. 19 (토) 오전 11시 · 경기도 화성시 양감면 송산리 519-3
+      <p class="contact">문의 · <a href="tel:01094154083">010-9415-4083</a></p>
+    </footer>
   </div>
-  <script>
-    // 사람(실제 브라우저)만 회신 페이지로 이동. 링크 미리보기 로봇은 JS를 실행하지 않아
-    // 이 페이지의 초대장 정보(OG)만 읽고 멈춥니다.
-    setTimeout(function () {
-      window.location.replace("https://claude.ai/code/artifact/68f5e475-8eca-4189-87e3-d4ae665c73c4");
-    }, 600);
-  </script>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  // D-day
+  var dday = document.getElementById("dday");
+  var t = new Date();
+  var days = Math.ceil((new Date(2026,8,19) - new Date(t.getFullYear(),t.getMonth(),t.getDate()))/86400000);
+  if (days > 0){ dday.textContent = "D−" + days; dday.hidden = false; }
+  else if (days === 0){ dday.textContent = "오늘, 준공식이 열립니다"; dday.hidden = false; }
+
+  // 주소 복사
+  var ADDR = "경기도 화성시 양감면 송산리 519-3";
+  var copyBtn = document.getElementById("copyAddr");
+  copyBtn.addEventListener("click", function(){
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(ADDR).then(function(){
+        copyBtn.textContent = "복사되었습니다";
+        setTimeout(function(){ copyBtn.textContent = "주소 복사"; }, 1800);
+      }, function(){ copyBtn.textContent = "복사 실패"; setTimeout(function(){ copyBtn.textContent="주소 복사"; },1800); });
+    }
+  });
+
+  // 동행 인원 스테퍼
+  var n = 0, MAX = 10;
+  var countEl = document.getElementById("compCount");
+  var inputEl = document.getElementById("compInput");
+  var minus = document.getElementById("minus"), plus = document.getElementById("plus");
+  function render(){ countEl.textContent = n + "명"; inputEl.value = n + "명"; minus.disabled = n<=0; plus.disabled = n>=MAX; }
+  minus.addEventListener("click", function(){ if(n>0){ n--; render(); } });
+  plus.addEventListener("click", function(){ if(n<MAX){ n++; render(); } });
+  render();
+
+  // 제출: 누적 집계 → 담당자 메일 발송 → 완료 페이지
+  var COUNTER = "https://abacus.jasoncameron.dev/hit/inobus-hwaseong-pet-2026/";
+  var MAIL_TO = ["inobus", "inobus.co.kr"].join("@");
+  var form = document.getElementById("rsvpForm");
+  var err = document.getElementById("formError");
+  var nameEl = document.getElementById("guestName");
+  var btn = document.getElementById("submitBtn");
+  var busy = false;
+
+  function hit(key){
+    return fetch(COUNTER + key, { cache: "no-store" })
+      .then(function(r){ return r.json(); })
+      .then(function(j){ return j.value; });
+  }
+  function hitTimes(key, times){
+    var last = Promise.resolve(null);
+    for (var i = 0; i < times; i++) last = last.then(function(){ return hit(key); });
+    return last;
+  }
+  function fail(msg){
+    err.textContent = msg; err.hidden = false;
+    btn.textContent = "참석 의사 전하기"; btn.disabled = false; busy = false;
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (busy) return;
+    var name = nameEl.value.trim();
+    if (!name){ err.textContent = "성함을 입력해 주세요."; err.hidden = false; nameEl.focus(); return; }
+    err.hidden = true; busy = true; btn.textContent = "전달하는 중…"; btn.disabled = true;
+
+    var party = n + 1;
+    var totals = { rsvp: null, people: null };
+    hit("rsvp")
+      .then(function(v){ totals.rsvp = v; return hitTimes("people", party); })
+      .then(function(v){ totals.people = v; })
+      .catch(function(){ /* 집계가 실패해도 회신 메일은 보냄 */ })
+      .then(function(){
+        var when = new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
+        var cum = totals.people != null ? "누적 " + totals.people + "명" : "누적 집계 실패";
+        var body = {
+          _subject: "[화성 준공식 참석] " + name + " 외 " + n + "명 · " + cum,
+          _template: "table",
+          "대표자": name,
+          "동행 인원": n + "명",
+          "이번 참석 인원(대표자 포함)": party + "명",
+          "누적 회신": totals.rsvp != null ? totals.rsvp + "건" : "집계 실패",
+          "누적 참석 인원": totals.people != null ? totals.people + "명" : "집계 실패",
+          "접수 일시": when
+        };
+        return fetch("https://formsubmit.co/ajax/" + MAIL_TO, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(body)
+        });
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if (String(j.success) === "true"){ window.location.href = "thanks.html"; }
+        else { fail("전달에 실패했습니다. 잠시 후 다시 시도하시거나 010-9415-4083으로 연락 주세요."); }
+      })
+      .catch(function(){ fail("전달에 실패했습니다. 잠시 후 다시 시도하시거나 010-9415-4083으로 연락 주세요."); });
+  });
+})();
+</script>
 </body>
 </html>
