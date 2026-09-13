@@ -3,7 +3,30 @@
   "VA7K3SzKkqx4",
   "HaHJkLBUoJ0s"
  ],
- "entries": [],
+ "entries": [
+  {
+   "uid": "HaHJkLBUoJ0s",
+   "eid": "HaHJkLBUoJ0s",
+   "time": 1789304530,
+   "name": "테스트(삭제)",
+   "party": 2,
+   "msg": "명단 표시 테스트입니다",
+   "kh": ""
+  },
+  {
+   "uid": "O2z6blFvDi9B",
+   "eid": "O2z6blFvDi9B",
+   "time": 1789305706,
+   "name": "더예쁜애",
+   "party": 2,
+   "msg": "추카추카",
+   "kh": ""
+  }
+ ],
  "deleted": [],
- "applied": []
+ "applied": [
+  "HaHJkLBUoJ0s",
+  "O2z6blFvDi9B",
+  "VA7K3SzKkqx4"
+ ]
 }
