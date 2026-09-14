@@ -32,6 +32,33 @@
    "party": 2,
    "msg": "",
    "kh": "b8b7dc505ed704053df48a40ba70d0cdc71632bb12b86ddb7490d61e82d4f2f6"
+  },
+  {
+   "uid": "44aa79294feeafc41944d7a3",
+   "eid": "J4Y8zoFPonME",
+   "time": 1789380871,
+   "name": "오원희",
+   "party": 1,
+   "msg": "",
+   "kh": "83e9656188cccd4565445d51df45322ee5f17c5ac92771430fbee6a3acbd02e1"
+  },
+  {
+   "uid": "abc86ad03fb505ad87a01016",
+   "eid": "VMPJuvOzU6xO",
+   "time": 1789389329,
+   "name": "이미란",
+   "party": 2,
+   "msg": "",
+   "kh": "d68b7135ad7d2936f9ce47a0debad984eb9a914de3e1444277f9da789b7cd2a2"
+  },
+  {
+   "uid": "9c9b455966b16e27f7ed1b0e",
+   "eid": "zbSxYF0zWwyk",
+   "time": 1789389492,
+   "name": "이태진",
+   "party": 1,
+   "msg": "고생 많았어  사업이 번창하길 기원합니다",
+   "kh": "ff76462a7812de29b811c7b956ee19eff0bdc3c8799fb9b88748b64969a63c84"
   }
  ],
  "deleted": [
@@ -43,14 +70,17 @@
   "5jzxScFbS1Rj",
   "8FNBDlzgj7mf",
   "HaHJkLBUoJ0s",
+  "J4Y8zoFPonME",
   "O2z6blFvDi9B",
   "ORuZXgUIHajf",
   "VA7K3SzKkqx4",
+  "VMPJuvOzU6xO",
   "VinmVjs0XkX1",
   "cBHP9aiGYz0w",
   "lcyT6cNjrsHC",
   "oaw21nAHiFR0",
   "sDiTSCQEOwEU",
-  "wvyoA3QkvSd3"
+  "wvyoA3QkvSd3",
+  "zbSxYF0zWwyk"
  ]
 }
