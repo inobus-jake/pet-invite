@@ -78,6 +78,15 @@
    "party": 1,
    "msg": "",
    "kh": "1f6f2313387c9050dba380f3c09d3e2b66acc3cc6dcb15f0d389016b0ba350a4"
+  },
+  {
+   "uid": "d4a5efad3d5cc95c11995290",
+   "eid": "519g99ukhoMM",
+   "time": 1789476138,
+   "name": "정성구",
+   "party": 1,
+   "msg": "",
+   "kh": "10292bdf686ea07f84c8e1151506f233a4eadcb6ba4476b4923da231df23bd5f"
   }
  ],
  "deleted": [
@@ -87,6 +96,7 @@
  ],
  "applied": [
   "3T99goSgkd0j",
+  "519g99ukhoMM",
   "5jzxScFbS1Rj",
   "8FNBDlzgj7mf",
   "HaHJkLBUoJ0s",
