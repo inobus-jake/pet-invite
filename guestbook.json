@@ -87,6 +87,15 @@
    "party": 1,
    "msg": "",
    "kh": "10292bdf686ea07f84c8e1151506f233a4eadcb6ba4476b4923da231df23bd5f"
+  },
+  {
+   "uid": "7ce978c4e1e2e1f057158956",
+   "eid": "HpVoJkrKSMPR",
+   "time": 1789516650,
+   "name": "오원희",
+   "party": 2,
+   "msg": "",
+   "kh": "2d8ca92adefc0e071979d93ead2a3b64a6af32c2e5506e86bec9505898411efb"
   }
  ],
  "deleted": [
@@ -100,6 +109,7 @@
   "5jzxScFbS1Rj",
   "8FNBDlzgj7mf",
   "HaHJkLBUoJ0s",
+  "HpVoJkrKSMPR",
   "J4Y8zoFPonME",
   "KnnKL7sLPRYA",
   "O2z6blFvDi9B",
