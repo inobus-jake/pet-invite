@@ -96,6 +96,15 @@
    "party": 2,
    "msg": "",
    "kh": "2d8ca92adefc0e071979d93ead2a3b64a6af32c2e5506e86bec9505898411efb"
+  },
+  {
+   "uid": "e0bac775b9d06e4243acdbda",
+   "eid": "M14nAz2Kb4rT",
+   "time": 1789639089,
+   "name": "이미선",
+   "party": 1,
+   "msg": "",
+   "kh": "2443d58e67f087b0b256f8f97074085f95f1db8b60ab94b8c52475a9329e0f4f"
   }
  ],
  "deleted": [
@@ -112,6 +121,7 @@
   "HpVoJkrKSMPR",
   "J4Y8zoFPonME",
   "KnnKL7sLPRYA",
+  "M14nAz2Kb4rT",
   "O2z6blFvDi9B",
   "ORuZXgUIHajf",
   "VA7K3SzKkqx4",
